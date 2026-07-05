@@ -1,7 +1,7 @@
 // In dev, Vite's proxy forwards relative /api paths to the local backend (see
 // vite.config.ts). In production the frontend and backend are on different
 // domains, so this points at the deployed backend instead.
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? ""
+const API_BASE = (import.meta.env.VITE_API_BASE_URL ?? "").replace(/\/+$/, "")
 
 export type SortOption = "relevance" | "price_asc" | "price_desc" | "rating" | "newest"
 

@@ -12,7 +12,9 @@ app = FastAPI(title="HTTP QUERY demo")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_methods=["*"],
+    # Starlette expands "*" to a fixed tuple of conventional HTTP methods that
+    # doesn't include QUERY, so it has to be listed explicitly here.
+    allow_methods=["GET", "POST", "QUERY"],
     allow_headers=["*"],
     expose_headers=["X-Cache", "X-Response-Time"],
 )
