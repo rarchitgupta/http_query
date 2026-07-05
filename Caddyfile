@@ -1,0 +1,3 @@
+api.httpquery.architgupta.dev {
+    reverse_proxy backend:8000
+}
