@@ -27,6 +27,13 @@ async def add_response_time_header(request: Request, call_next):
     return response
 
 
+@app.get("/health")
+def health():
+    """Cheap liveness check -- point an uptime pinger here to keep the free
+    Render instance from spinning down between visits."""
+    return {"status": "ok"}
+
+
 @app.get("/api/products")
 def get_products(
     response: Response,

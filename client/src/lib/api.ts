@@ -1,3 +1,8 @@
+// In dev, Vite's proxy forwards relative /api paths to the local backend (see
+// vite.config.ts). In production the frontend and backend are on different
+// domains, so this points at the deployed backend instead.
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? ""
+
 export type SortOption = "relevance" | "price_asc" | "price_desc" | "rating" | "newest"
 
 export interface Product {
@@ -73,7 +78,7 @@ async function toResult(request: Promise<Response>, start: number): Promise<Requ
 
 function sendGet(filters: FiltersState) {
   const start = performance.now()
-  return toResult(fetch(`/api/products?${buildQueryString(filters)}`), start)
+  return toResult(fetch(`${API_BASE}/api/products?${buildQueryString(filters)}`), start)
 }
 
 function sendGetBody() {
@@ -81,13 +86,13 @@ function sendGetBody() {
   // throws synchronously if you try to attach one. So this fires the exact
   // request a real app is stuck making: a bare GET, no body, no filters.
   const start = performance.now()
-  return toResult(fetch("/api/products/body-demo"), start)
+  return toResult(fetch(`${API_BASE}/api/products/body-demo`), start)
 }
 
 function sendPost(filters: FiltersState) {
   const start = performance.now()
   return toResult(
-    fetch("/api/products/search", {
+    fetch(`${API_BASE}/api/products/search`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(filtersToBody(filters)),
@@ -99,7 +104,7 @@ function sendPost(filters: FiltersState) {
 function sendQuery(filters: FiltersState) {
   const start = performance.now()
   return toResult(
-    fetch("/api/products", {
+    fetch(`${API_BASE}/api/products`, {
       method: "QUERY",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(filtersToBody(filters)),
