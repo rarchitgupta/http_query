@@ -43,7 +43,7 @@ const ROWS: Row[] = [
   },
   {
     prop: "Standardized & supported",
-    cells: [{ sym: "yes" }, { sym: "no" }, { sym: "yes" }, { sym: "warn", note: "draft" }],
+    cells: [{ sym: "yes" }, { sym: "no" }, { sym: "yes" }, { sym: "warn", note: "new RFC, adoption early" }],
   },
 ]
 

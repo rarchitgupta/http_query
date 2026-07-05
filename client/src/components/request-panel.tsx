@@ -97,10 +97,10 @@ export function RequestPanel({ method, filters }: { method: MethodId; filters: F
 
       <div className="border-t px-4 py-3 text-xs leading-relaxed text-muted-foreground">
         {method === "get" &&
-          "Every filter lives in the URL — visible in logs, history and shareable links, but capped by the ~2KB limit most proxies and CDNs enforce."}
+          "Every filter lives in the URL, visible in logs, history and shareable links, but capped by the ~2KB limit most proxies and CDNs enforce."}
         {method === "getbody" &&
           "fetch() throws if you attach a body to a GET request, so the body above is never actually sent. The server receives a bare GET and returns the whole catalog, unfiltered."}
-        {method === "post" && "The body arrives fine — but POST means \"this changes state.\""}
+        {method === "post" && "The body arrives fine, but POST means \"this changes state.\""}
         {method === "query" &&
           "A body like POST, sent on a method that's safe and idempotent like GET."}
       </div>

@@ -60,7 +60,7 @@ async def get_products_body_demo(request: Request, response: Response):
     response.headers["Cache-Control"] = "public, max-age=60"
     return {
         "count": len(PRODUCTS),
-        "note": "no filters applied — GET has no defined body semantics, so it was ignored",
+        "note": "no filters applied, GET has no defined body semantics, so it was ignored",
         "results": PRODUCTS,
     }
 

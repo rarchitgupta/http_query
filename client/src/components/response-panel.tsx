@@ -4,7 +4,12 @@ import type { MethodId, RequestResult } from "@/lib/api"
 import { methodMeta } from "@/lib/constants"
 import { JsonBlock } from "@/lib/json-highlight"
 
-const SHOWN_HEADERS = ["cache-control", "x-cache", "x-response-time", "content-type"]
+const SHOWN_HEADERS = [
+  "cache-control",
+  "x-cache",
+  "x-response-time",
+  "content-type",
+]
 
 export function ResponsePanel({
   method,
@@ -31,21 +36,21 @@ export function ResponsePanel({
           onClick={onSend}
           style={{ backgroundColor: meta.color, color: "white" }}
         >
-          {sending ? "Sending…" : result ? "Send again" : "Send request"}
+          {sending ? "Sending..." : "Send"}
         </Button>
       </div>
 
       <div className="flex-1 overflow-x-auto p-4 font-mono text-[13px] leading-relaxed">
         {sending && (
           <div className="animate-pulse text-muted-foreground">
-            … waiting for response…
+            waiting for response...
           </div>
         )}
 
         {!sending && !result && (
           <div className="text-muted-foreground">
-            Press <span className="font-semibold text-foreground/80">Send</span> to fire this
-            request.
+            Press <span className="font-semibold text-foreground/80">Send</span>{" "}
+            to fire this request.
           </div>
         )}
 
@@ -65,11 +70,15 @@ export function ResponsePanel({
             </div>
             {SHOWN_HEADERS.filter((h) => result.headers[h]).map((h) => (
               <div key={h} className="text-muted-foreground">
-                {headerLabel(h)}: <span className="text-foreground/80">{result.headers[h]}</span>
+                {headerLabel(h)}:{" "}
+                <span className="text-foreground/80">{result.headers[h]}</span>
               </div>
             ))}
             <div className="text-muted-foreground">
-              Round trip: <span className="text-foreground/80">{result.elapsedMs.toFixed(1)}ms</span>
+              Round trip:{" "}
+              <span className="text-foreground/80">
+                {result.elapsedMs.toFixed(1)}ms
+              </span>
             </div>
             <div className="mt-3">
               <JsonBlock value={result.body} />

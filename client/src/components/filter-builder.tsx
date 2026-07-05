@@ -27,7 +27,7 @@ export function FilterBuilder({
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm font-semibold">Product search</span>
         <span className="text-xs text-muted-foreground">
-          — edit to see each request update live
+          edit to see each request update live
         </span>
         <div className="ml-auto flex gap-2">
           <Button
@@ -49,7 +49,7 @@ export function FilterBuilder({
           <Input
             value={filters.q}
             onChange={(e) => onChange({ ...filters, q: e.target.value })}
-            placeholder="search products…"
+            placeholder="search products..."
           />
         </div>
 

@@ -21,7 +21,7 @@ export const TAG_POOL = [
   "formal",
 ]
 
-// Purely synthetic — used only to blow up the URL for the "stress test" button.
+// Purely synthetic, used only to blow up the URL for the "stress test" button.
 export const STRESS_TAGS = Array.from({ length: 40 }, (_, i) => `stress-filter-${i + 1}`)
 
 export const DEFAULT_FILTERS: FiltersState = {
